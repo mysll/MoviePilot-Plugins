@@ -40,7 +40,7 @@ class ZhuQue(_ISiteSigninHandler):
         render = site_info.get("render")
 
         # 获取页面html
-        html_text = self.get_page_source(url="https://zhuque.in",
+        html_text = self.get_page_source(url="https://zhuque.in/index",
                                          cookie=site_cookie,
                                          ua=ua,
                                          proxy=proxy,
