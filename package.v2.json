@@ -5,7 +5,7 @@
         "labels": "站点",
         "version": "2.5.3",
         "icon": "signin.png",
-        "author": "thsrite",
+        "author": "mysll",
         "level": 2,
         "history": {
             "v2.5.3": "修复ZhuQue签到",

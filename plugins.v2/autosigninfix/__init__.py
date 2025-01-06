@@ -39,9 +39,9 @@ class AutoSignInFix(_PluginBase):
     # 插件版本
     plugin_version = "2.5.3"
     # 插件作者
-    plugin_author = "thsrite"
+    plugin_author = "mysll"
     # 作者主页
-    author_url = "https://github.com/thsrite"
+    author_url = "https://github.com/mysll"
     # 插件配置项ID前缀
     plugin_config_prefix = "autosigninfix_"
     # 加载顺序
