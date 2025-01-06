@@ -43,7 +43,7 @@ class AutoSignInFix(_PluginBase):
     # 作者主页
     author_url = "https://github.com/thsrite"
     # 插件配置项ID前缀
-    plugin_config_prefix = "autosignin_"
+    plugin_config_prefix = "autosigninfix_"
     # 加载顺序
     plugin_order = 0
     # 可使用的用户级别
@@ -107,7 +107,7 @@ class AutoSignInFix(_PluginBase):
         # 加载模块
         if self._enabled or self._onlyonce:
 
-            self._site_schema = ModuleHelper.load('app.plugins.autosignin.sites',
+            self._site_schema = ModuleHelper.load('app.plugins.autosigninfix.sites',
                                                   filter_func=lambda _, obj: hasattr(obj, 'match'))
 
             # 立即运行一次
@@ -198,7 +198,7 @@ class AutoSignInFix(_PluginBase):
             try:
                 if str(self._cron).strip().count(" ") == 4:
                     return [{
-                        "id": "AutoSignIn",
+                        "id": "AutoSignInFix",
                         "name": "站点自动签到服务",
                         "trigger": CronTrigger.from_crontab(self._cron),
                         "func": self.sign_in,
@@ -219,7 +219,7 @@ class AutoSignInFix(_PluginBase):
                             self._end_time = int(times[1])
                         if self._start_time and self._end_time:
                             return [{
-                                "id": "AutoSignIn",
+                                "id": "AutoSignInFix",
                                 "name": "站点自动签到服务",
                                 "trigger": "interval",
                                 "func": self.sign_in,
@@ -232,7 +232,7 @@ class AutoSignInFix(_PluginBase):
                     else:
                         # 默认0-24 按照周期运行
                         return [{
-                            "id": "AutoSignIn",
+                            "id": "AutoSignInFix",
                             "name": "站点自动签到服务",
                             "trigger": "interval",
                             "func": self.sign_in,
@@ -252,7 +252,7 @@ class AutoSignInFix(_PluginBase):
             ret_jobs = []
             for trigger in triggers:
                 ret_jobs.append({
-                    "id": f"AutoSignIn|{trigger.hour}:{trigger.minute}",
+                    "id": f"AutoSignInFix|{trigger.hour}:{trigger.minute}",
                     "name": "站点自动签到服务",
                     "trigger": "cron",
                     "func": self.sign_in,
