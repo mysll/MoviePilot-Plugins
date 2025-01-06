@@ -1,6 +1,6 @@
 {
-    "AutoSignIn": {
-        "name": "站点自动签到",
+    "AutoSignInFix": {
+        "name": "站点自动签到Fix",
         "description": "自动模拟登录、签到站点。",
         "labels": "站点",
         "version": "2.5.3",

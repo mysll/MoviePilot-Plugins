@@ -16,6 +16,7 @@ from app.chain.site import SiteChain
 from app.core.config import settings
 from app.core.event import EventManager, eventmanager, Event
 from app.db.site_oper import SiteOper
+from app.db.sitestatistic_oper import SiteStatisticOper
 from app.helper.browser import PlaywrightHelper
 from app.helper.cloudflare import under_challenge
 from app.helper.module import ModuleHelper
@@ -37,7 +38,7 @@ class AutoSignInFix(_PluginBase):
     # 插件图标
     plugin_icon = "signin.png"
     # 插件版本
-    plugin_version = "2.5.3"
+    plugin_version = "2.4.3"
     # 插件作者
     plugin_author = "thsrite"
     # 作者主页
@@ -53,6 +54,7 @@ class AutoSignInFix(_PluginBase):
     sites: SitesHelper = None
     siteoper: SiteOper = None
     sitechain: SiteChain = None
+    sitestatistic: SiteStatisticOper = None
     # 事件管理器
     event: EventManager = None
     # 定时器
@@ -79,6 +81,7 @@ class AutoSignInFix(_PluginBase):
         self.siteoper = SiteOper()
         self.event = EventManager()
         self.sitechain = SiteChain()
+        self.sitestatistic = SiteStatisticOper()
 
         # 停止现有任务
         self.stop_service()
@@ -880,9 +883,9 @@ class AutoSignInFix(_PluginBase):
         seconds = (datetime.now() - start_time).seconds
         domain = StringUtils.get_url_domain(site_info.get('url'))
         if state:
-            self.siteoper.success(domain=domain, seconds=seconds)
+            self.sitestatistic.success(domain=domain, seconds=seconds)
         else:
-            self.siteoper.fail(domain)
+            self.sitestatistic.fail(domain)
         return site_info.get("name"), message
 
     @staticmethod
@@ -982,9 +985,9 @@ class AutoSignInFix(_PluginBase):
         seconds = (datetime.now() - start_time).seconds
         domain = StringUtils.get_url_domain(site_info.get('url'))
         if state:
-            self.siteoper.success(domain=domain, seconds=seconds)
+            self.sitestatistic.success(domain=domain, seconds=seconds)
         else:
-            self.siteoper.fail(domain)
+            self.sitestatistic.fail(domain)
         return site_info.get("name"), message
 
     @staticmethod
