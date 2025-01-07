@@ -3,7 +3,7 @@ from typing import Tuple
 from ruamel.yaml import CommentedMap
 
 from app.log import logger
-from app.plugins.autogisninfix.sites import _ISiteSigninHandler
+from app.plugins.autosigninfix.sites import _ISiteSigninHandler
 from app.utils.string import StringUtils
 
 

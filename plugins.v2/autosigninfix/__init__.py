@@ -37,7 +37,7 @@ class AutoSignInFix(_PluginBase):
     # 插件图标
     plugin_icon = "signin.png"
     # 插件版本
-    plugin_version = "2.5.3"
+    plugin_version = "2.5.4"
     # 插件作者
     plugin_author = "mysll"
     # 作者主页
@@ -199,7 +199,7 @@ class AutoSignInFix(_PluginBase):
                 if str(self._cron).strip().count(" ") == 4:
                     return [{
                         "id": "AutoSignInFix",
-                        "name": "站点自动签到服务",
+                        "name": "站点自动签到服务Fix",
                         "trigger": CronTrigger.from_crontab(self._cron),
                         "func": self.sign_in,
                         "kwargs": {}
@@ -220,7 +220,7 @@ class AutoSignInFix(_PluginBase):
                         if self._start_time and self._end_time:
                             return [{
                                 "id": "AutoSignInFix",
-                                "name": "站点自动签到服务",
+                                "name": "站点自动签到服务Fix",
                                 "trigger": "interval",
                                 "func": self.sign_in,
                                 "kwargs": {
@@ -233,7 +233,7 @@ class AutoSignInFix(_PluginBase):
                         # 默认0-24 按照周期运行
                         return [{
                             "id": "AutoSignInFix",
-                            "name": "站点自动签到服务",
+                            "name": "站点自动签到服务Fix",
                             "trigger": "interval",
                             "func": self.sign_in,
                             "kwargs": {
@@ -253,7 +253,7 @@ class AutoSignInFix(_PluginBase):
             for trigger in triggers:
                 ret_jobs.append({
                     "id": f"AutoSignInFix|{trigger.hour}:{trigger.minute}",
-                    "name": "站点自动签到服务",
+                    "name": "站点自动签到服务Fix",
                     "trigger": "cron",
                     "func": self.sign_in,
                     "kwargs": {

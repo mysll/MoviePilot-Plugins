@@ -4,7 +4,7 @@ from ruamel.yaml import CommentedMap
 
 from app.core.config import settings
 from app.log import logger
-from app.plugins.autogisninfix.sites import _ISiteSigninHandler
+from app.plugins.autosigninfix.sites import _ISiteSigninHandler
 from app.utils.http import RequestUtils
 from app.utils.string import StringUtils
 
